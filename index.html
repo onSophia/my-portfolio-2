@@ -45,7 +45,6 @@
             background-color: var(--bg-body);
             color: var(--text-main);
             display: flex;
-            /* Используем Flex для лучшего контроля на мобильных */
             min-height: 100vh;
             overflow-x: hidden;
         }
@@ -58,7 +57,6 @@
             height: 100vh;
             width: var(--sidebar-width);
             position: fixed;
-            /* Фиксируем сайдбар */
             top: 0;
             left: 0;
             display: flex;
@@ -68,7 +66,6 @@
             transition: transform 0.3s ease;
         }
 
-        /* Мобильный оверлей (затемнение) */
         .sidebar-overlay {
             position: fixed;
             top: 0;
@@ -103,7 +100,6 @@
 
         .close-sidebar-btn {
             display: none;
-            /* Скрыт на ПК */
             background: none;
             border: none;
             color: var(--text-muted);
@@ -144,7 +140,6 @@
         /* --- 3. MAIN CONTENT --- */
         .main-content {
             margin-left: var(--sidebar-width);
-            /* Отступ слева равен ширине сайдбара */
             padding: 32px;
             flex: 1;
             display: flex;
@@ -163,7 +158,6 @@
 
         .mobile-toggle-btn {
             display: none;
-            /* Скрыт на ПК */
             background: var(--bg-card);
             border: 1px solid var(--border);
             color: var(--text-main);
@@ -260,14 +254,12 @@
         .table-container {
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
-            /* Плавный скролл на iOS */
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             min-width: 600px;
-            /* Чтобы таблица скроллилась, а не сжималась в кашу */
         }
 
         th,
@@ -309,7 +301,6 @@
             color: #854d0e;
         }
 
-        /* Buttons */
         .btn-primary {
             background: var(--primary);
             color: white;
@@ -502,7 +493,6 @@
             opacity: 0;
             transition: opacity 0.3s;
             padding: 20px;
-            /* Чтобы модалка не прилипала к краям на телефоне */
         }
 
         .modal-overlay.open {
@@ -530,29 +520,24 @@
         @media (max-width: 1024px) {
             .sidebar {
                 transform: translateX(-100%);
-                /* Скрываем меню влево */
             }
 
             .sidebar.active {
                 transform: translateX(0);
-                /* Показываем при классе active */
             }
 
             .close-sidebar-btn {
                 display: block;
-                /* Показываем крестик внутри меню */
             }
 
             .main-content {
                 margin-left: 0;
-                /* Убираем отступ */
                 width: 100%;
                 padding: 20px;
             }
 
             .mobile-toggle-btn {
                 display: flex;
-                /* Показываем кнопку-гамбургер */
             }
 
             .stats-grid {
@@ -563,12 +548,10 @@
         @media (max-width: 768px) {
             .settings-layout {
                 grid-template-columns: 1fr;
-                /* Настройки в одну колонку */
             }
 
             .header {
                 flex-direction: row;
-                /* Оставляем в строку, но... */
             }
 
             .page-title {
@@ -586,14 +569,12 @@
             .switch-row span {
                 font-size: 0.9rem;
                 max-width: 80%;
-                /* Чтобы текст не наезжал на переключатель */
             }
         }
 
         @media (max-width: 480px) {
             .stats-grid {
                 grid-template-columns: 1fr;
-                /* Статистика в 1 колонку */
             }
 
             .header-actions {
@@ -602,10 +583,8 @@
 
             .card {
                 padding: 16px;
-                /* Меньше отступы в карточках */
             }
 
-            /* Скрываем приветствие на совсем маленьких экранах, чтобы влез заголовок */
             .header p {
                 display: none;
             }
@@ -839,14 +818,12 @@
             const sidebar = document.getElementById('sidebar');
             const overlay = document.querySelector('.sidebar-overlay');
 
-            // Если мы нажали на пункт меню на мобильном - закрываем меню
             if (autoClose && window.innerWidth <= 1024) {
                 sidebar.classList.remove('active');
                 overlay.classList.remove('active');
                 return;
             }
 
-            // Обычное переключение
             if (autoClose === false) {
                 sidebar.classList.toggle('active');
                 overlay.classList.toggle('active');
@@ -951,7 +928,6 @@
 
         function drawChart() {
             const canvas = document.getElementById('mainChart');
-            // Важно: берем родительский размер
             const parent = canvas.parentElement;
             canvas.width = parent.clientWidth;
             canvas.height = parent.clientHeight;
@@ -966,7 +942,7 @@
             gradient.addColorStop(0, 'rgba(79, 70, 229, 0.4)');
             gradient.addColorStop(1, 'rgba(79, 70, 229, 0)');
 
-            ctx.clearRect(0, 0, width, height); // Очистка перед перерисовкой
+            ctx.clearRect(0, 0, width, height);
 
             ctx.beginPath();
             ctx.moveTo(0, height);
